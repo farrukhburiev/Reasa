@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="farrukh.example.reasa.Splash_fragments.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="farrukh.example.reasa.Splash_fragments.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_walkthrough_1"
+            app:destination="@id/walkthrough_1" />
+    </fragment>
+    <fragment
+        android:id="@+id/walkthrough_1"
+        android:name="farrukh.example.reasa.Walkthrough_fragments.Walkthrough_1"
+        android:label="fragment_walkthrough_1"
+        tools:layout="@layout/fragment_walkthrough_1" >
+
+        <action
+            android:id="@+id/action_walkthrough_1_to_walkthrough_2"
+            app:destination="@id/walkthrough_2" />
+    </fragment>
+    <fragment
+        android:id="@+id/walkthrough_2"
+        android:name="farrukh.example.reasa.Walkthrough_fragments.Walkthrough_2"
+        android:label="fragment_walkthrough_2"
+        tools:layout="@layout/fragment_walkthrough_2" >
+        <action
+            android:id="@+id/action_walkthrough_2_to_walkthrough_3"
+            app:destination="@id/walkthrough_3" />
+    </fragment>
+    <fragment
+        android:id="@+id/walkthrough_3"
+        android:name="farrukh.example.reasa.Walkthrough_fragments.Walkthrough_3"
+        android:label="fragment_walkhrough_3"
+        tools:layout="@layout/fragment_walkhrough_3" >
+
+    </fragment>
+</navigation>
