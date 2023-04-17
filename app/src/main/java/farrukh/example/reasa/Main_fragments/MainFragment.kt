@@ -5,8 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import farrukh.example.reasa.R
+import farrukh.example.reasa.adapter.FeaturedAdapter
+import farrukh.example.reasa.adapter.RecomendationAdapter
 import farrukh.example.reasa.databinding.FragmentMainBinding
+import farrukh.example.reasa.model.Category
+import farrukh.example.reasa.model.Featured
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,6 +43,31 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentMainBinding.inflate(inflater,container,false)
+        var list = mutableListOf<Featured>()
+        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
+        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
+        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
+        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
+        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
+        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
+        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
+        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
+        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
+        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
+        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
+        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
+        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
+        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
+        var adapter = FeaturedAdapter(list)
+        binding.recyclerView.adapter = adapter
+        val manager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        binding.recyclerView.layoutManager = manager
+
+        var adapter_rec = RecomendationAdapter(list)
+        binding.recRecycle.adapter = adapter_rec
+        val manager_rec = GridLayoutManager(requireContext(),2,LinearLayoutManager.VERTICAL,false)
+        binding.recRecycle.layoutManager = manager_rec
+
         return binding.root
     }
 
