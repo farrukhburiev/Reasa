@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import farrukh.example.reasa.R
+import farrukh.example.reasa.databinding.FragmentPinCodeBinding
+import farrukh.example.reasa.databinding.FragmentProfileBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,8 +37,13 @@ class PinCode_Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pin_code_, container, false)
+        val binding = FragmentPinCodeBinding.inflate(inflater,container,false)
+
+        binding.verify.setOnClickListener {
+            findNavController().navigate(R.id.action_pinCode_Fragment_to_mainFragment)
+        }
+
+        return binding.root
     }
 
     companion object {

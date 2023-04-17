@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import farrukh.example.reasa.R
+import farrukh.example.reasa.databinding.FragmentCreateAccountBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,8 +37,18 @@ class Create_Account_Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create__account_, container, false)
+        val binding = FragmentCreateAccountBinding.inflate(inflater,container,false)
+        binding.next.setOnClickListener {
+            findNavController().navigate(R.id.action_create_Account_Fragment2_to_loginFragment)
+        }
+        binding.signIn.setOnClickListener {
+            findNavController().navigate(R.id.action_create_Account_Fragment2_to_loginFragment)
+        }
+        binding.google.setOnClickListener {
+            Toast.makeText(requireContext(), "Not available at the moment, try another option for signing", Toast.LENGTH_SHORT).show()
+
+        }
+        return binding.root
     }
 
     companion object {

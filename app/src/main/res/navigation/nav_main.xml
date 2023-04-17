@@ -48,5 +48,88 @@
         android:label="fragment_walkhrough_3"
         tools:layout="@layout/fragment_walkhrough_3" >
 
+        <action
+            android:id="@+id/action_walkthrough_3_to_options_for_Signing_Fragment"
+            app:destination="@id/options_for_Signing_Fragment" />
     </fragment>
+    <fragment
+        android:id="@+id/options_for_Signing_Fragment"
+        android:name="farrukh.example.reasa.SignInSignUp_fragments.Options_for_Signing_Fragment"
+        android:label="fragment_options_for__signing_"
+        tools:layout="@layout/fragment_options_for__signing_" >
+        <action
+            android:id="@+id/action_options_for_Signing_Fragment_to_create_Account_Fragment2"
+            app:destination="@id/create_Account_Fragment2" />
+        <action
+            android:id="@+id/action_options_for_Signing_Fragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_options_for_Signing_Fragment_to_walkthrough_3"
+            app:destination="@id/walkthrough_3" />
+    </fragment>
+    <fragment
+        android:id="@+id/create_Account_Fragment2"
+        android:name="farrukh.example.reasa.SignInSignUp_fragments.Create_Account_Fragment"
+        android:label="fragment_create__account_"
+        tools:layout="@layout/fragment_create__account_" >
+        <action
+            android:id="@+id/action_create_Account_Fragment2_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_create_Account_Fragment2_to_options_for_Signing_Fragment"
+            app:destination="@id/options_for_Signing_Fragment" />
+        <action
+            android:id="@+id/action_create_Account_Fragment2_to_loginFragment2"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="farrukh.example.reasa.SignInSignUp_fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_create_Account_Fragment2"
+            app:destination="@id/create_Account_Fragment2" />
+        <action
+            android:id="@+id/action_loginFragment_to_pinCode_Fragment"
+            app:destination="@id/pinCode_Fragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_create_Account_Fragment22"
+            app:destination="@id/create_Account_Fragment2" />
+        <action
+            android:id="@+id/action_loginFragment_to_options_for_Signing_Fragment"
+            app:destination="@id/options_for_Signing_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="farrukh.example.reasa.SignInSignUp_fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_pinCode_Fragment"
+            app:destination="@id/pinCode_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pinCode_Fragment"
+        android:name="farrukh.example.reasa.SignInSignUp_fragments.PinCode_Fragment"
+        android:label="fragment_pin_code_"
+        tools:layout="@layout/fragment_pin_code_" >
+        <action
+            android:id="@+id/action_pinCode_Fragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_pinCode_Fragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="farrukh.example.reasa.Main_fragments.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
 </navigation>

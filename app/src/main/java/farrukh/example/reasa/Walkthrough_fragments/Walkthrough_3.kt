@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import farrukh.example.reasa.R
+import farrukh.example.reasa.databinding.FragmentWalkhrough3Binding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,7 +37,11 @@ class Walkthrough_3 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_walkhrough_3, container, false)
+        val binding = FragmentWalkhrough3Binding.inflate(inflater,container,false)
+        binding.next.setOnClickListener {
+            findNavController().navigate(R.id.action_walkthrough_3_to_options_for_Signing_Fragment)
+        }
+        return binding.root
     }
 
     companion object {

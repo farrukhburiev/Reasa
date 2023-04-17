@@ -45,6 +45,7 @@ class SplashFragment : Fragment() {
         binding.load.startAnimation(anim1)
         Handler(Looper.getMainLooper()).postDelayed({
             findNavController().navigate(R.id.action_splashFragment_to_welcomeFragment)
+
         },3000)
 
 

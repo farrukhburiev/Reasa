@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import farrukh.example.reasa.R
 import farrukh.example.reasa.databinding.FragmentOptionsForSigningBinding
@@ -36,8 +37,17 @@ class Options_for_Signing_Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       val binding = FragmentOptionsForSigningBinding.inflate(inflater,container,false)
+        val binding = FragmentOptionsForSigningBinding.inflate(inflater, container, false)
 
+        binding.signUp.setOnClickListener {
+            findNavController().navigate(R.id.action_options_for_Signing_Fragment_to_create_Account_Fragment2)
+        }
+        binding.next.setOnClickListener {
+            findNavController().navigate(R.id.action_options_for_Signing_Fragment_to_loginFragment)
+        }
+        binding.continie.setOnClickListener {
+            Toast.makeText(requireContext(), "Not available at the moment, try another option for signing", Toast.LENGTH_SHORT).show()
+        }
         return binding.root
 
     }
