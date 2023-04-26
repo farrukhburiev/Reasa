@@ -22,4 +22,9 @@
         <item name="android:textColor">@color/black</item>
 
     </style>
+
+    <style name="bottom_nav_bar"
+        parent="Widget.Design.BottomNavigationView">
+        <item name="fontFamily">@font/gilroybold</item>
+    </style>
 </resources>

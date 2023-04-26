@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".SignInSignUp_fragments.ProfileFragment">
+    tools:context=".SignInSignUp_fragments.Fill_ProfileFragment">
 
     <ImageView
         android:id="@+id/imageView4"
@@ -21,7 +21,7 @@
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/white"
         android:src="@drawable/arrow_back"
@@ -31,7 +31,7 @@
     <View
         android:id="@+id/view2"
         android:layout_width="0dp"
-        android:layout_height="514dp"
+        android:layout_height="530dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -152,7 +152,7 @@
         app:startIconDrawable="@drawable/lock_mini">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/email_org"
+            android:id="@+id/password_org"
             android:inputType="numberPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -179,6 +179,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email" />
+
 
 
     <View

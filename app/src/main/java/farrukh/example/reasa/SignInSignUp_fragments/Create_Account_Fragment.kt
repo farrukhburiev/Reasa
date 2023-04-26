@@ -1,14 +1,19 @@
 package farrukh.example.reasa.SignInSignUp_fragments
 
+import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import farrukh.example.reasa.R
 import farrukh.example.reasa.databinding.FragmentCreateAccountBinding
+import farrukh.example.reasa.model.User
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,16 +43,48 @@ class Create_Account_Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentCreateAccountBinding.inflate(inflater,container,false)
-        binding.next.setOnClickListener {
-            findNavController().navigate(R.id.action_create_Account_Fragment2_to_loginFragment)
-        }
         binding.signIn.setOnClickListener {
             findNavController().navigate(R.id.action_create_Account_Fragment2_to_loginFragment)
         }
         binding.google.setOnClickListener {
-            Toast.makeText(requireContext(), "Not available at the moment, try another option for signing", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                "Not available at the moment, try another option for signing",
+                Toast.LENGTH_SHORT
+            ).show()
 
         }
+
+
+        var users = mutableListOf<User>()
+        val type = object : TypeToken<List<User>>() {}.type
+        val gson = Gson()
+        val activity: AppCompatActivity = activity as AppCompatActivity
+        val sharedPreferences = activity.getSharedPreferences("user", Context.MODE_PRIVATE)
+        val edit = sharedPreferences.edit()
+        val strr = sharedPreferences.getString("users", "")
+
+        binding.next.setOnClickListener {
+            if (binding.emailOrg.text.toString().length != 0 && binding.passwordOrg.text.toString().length != 0) {
+
+                var usern = binding.emailOrg.text.toString()
+                    var userp = binding.passwordOrg.text.toString()
+                    users.add(User(usern, userp,null,null))
+                    val s = gson.toJson(users)
+                    edit.putString("users", s).apply()
+                    Toast.makeText(requireContext(), "creating new account", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_create_Account_Fragment2_to_loginFragment)
+            }
+            else {
+                Toast.makeText(requireContext(), "fill these fucking fields you motherfucker", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+
+
+
+
         return binding.root
     }
 

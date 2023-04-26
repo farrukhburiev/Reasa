@@ -1,22 +1,23 @@
-package farrukh.example.reasa.SignInSignUp_fragments
+package farrukh.example.reasa.Main_fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.navigation.fragment.findNavController
 import farrukh.example.reasa.R
-import farrukh.example.reasa.databinding.FragmentProfileBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-
-class ProfileFragment : Fragment() {
+/**
+ * A simple [Fragment] subclass.
+ * Use the [Profile_org_Fragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+class Profile_org_Fragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -33,14 +34,8 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentProfileBinding.inflate(inflater,container,false)
-        binding.photo.setOnClickListener {
-            Toast.makeText(requireContext(), "camera is not allowed in your phone", Toast.LENGTH_SHORT).show()
-        }
-        binding.next.setOnClickListener {
-            findNavController().navigate(R.id.action_profileFragment_to_pinCode_Fragment)
-        }
-        return binding.root
+        val binding = // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_profile_org_, container, false)
     }
 
     companion object {
@@ -50,12 +45,12 @@ class ProfileFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
+         * @return A new instance of fragment Profile_org_Fragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
+            Profile_org_Fragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

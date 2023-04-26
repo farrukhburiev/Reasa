@@ -1,18 +1,18 @@
 package farrukh.example.reasa.Main_fragments
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import farrukh.example.reasa.R
-import farrukh.example.reasa.adapter.FeaturedAdapter
-import farrukh.example.reasa.adapter.RecomendationAdapter
-import farrukh.example.reasa.databinding.FragmentMainBinding
-import farrukh.example.reasa.model.Category
+import farrukh.example.reasa.SignInSignUp_fragments.Fill_ProfileFragment
+import farrukh.example.reasa.databinding.FragmentMain2Binding
 import farrukh.example.reasa.model.Featured
 
 // TODO: Rename parameter arguments, choose names that match
@@ -42,45 +42,93 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentMainBinding.inflate(inflater,container,false)
-        var list = mutableListOf<Featured>()
-        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
-        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
-        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
-        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
-        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
-        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
-        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
-        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
-        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
-        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
-        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
-        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
-        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
-        list.add(Featured("Modernica Apartment",R.drawable.modern_home,28.5,Category.APARTMENT))
-        var adapter = FeaturedAdapter(list)
-        binding.recyclerView.adapter = adapter
-        val manager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-        binding.recyclerView.layoutManager = manager
+       val binding = FragmentMain2Binding.inflate(inflater,container,false)
 
-        var adapter_rec = RecomendationAdapter(list)
-        binding.recRecycle.adapter = adapter_rec
-        val manager_rec = GridLayoutManager(requireContext(),2,LinearLayoutManager.VERTICAL,false)
-        binding.recRecycle.layoutManager = manager_rec
+        parentFragmentManager.beginTransaction().add(R.id.main_fragment,HomeFragment()).commit()
 
+
+        val gson = Gson()
+        val type = object : TypeToken<List<Featured>>() {}.type
+        val activity: AppCompatActivity = activity as AppCompatActivity
+        val sharedPreferences = activity.getSharedPreferences("user", Context.MODE_PRIVATE)
+        val strr = sharedPreferences.getString("favorite", "")
+        val edit = sharedPreferences.edit()
+
+        var items = mutableListOf<Featured>()
+
+        items = gson.fromJson(strr, type)
+
+        Log.d("TAG", "onCreateView: " + items.joinToString())
+        val favorites = mutableListOf<Featured>()
+        for (i in 0 until items.size) {
+            if (items[i].state == true) {
+                favorites.add(items[i])
+            }
+        }
+
+
+
+        binding.bottomNavViewBar.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.home ->{
+                    binding.bottomNavViewBar.getOrCreateBadge(R.id.favorites).apply {
+                        number = favorites.size
+                        isVisible = false
+                    }
+                    parentFragmentManager.beginTransaction().replace(R.id.main_fragment,HomeFragment(
+                    )).commit()
+                    return@setOnNavigationItemSelectedListener true
+                }
+
+                R.id.explore ->{
+                    binding.bottomNavViewBar.getOrCreateBadge(R.id.favorites).apply {
+                        number = favorites.size
+                        isVisible = false
+                    }
+                    parentFragmentManager.beginTransaction().replace(R.id.main_fragment,ExploreFragment()).commit()
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.favorites ->{
+                    binding.bottomNavViewBar.getOrCreateBadge(R.id.favorites).apply {
+                        number = favorites.size
+                        isVisible = false
+                    }
+                    parentFragmentManager.beginTransaction().replace(R.id.main_fragment,FavoriteFragment()).commit()
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.message ->{
+                    binding.bottomNavViewBar.getOrCreateBadge(R.id.favorites).apply {
+                        number = favorites.size
+                        isVisible = false
+                    }
+                    parentFragmentManager.beginTransaction().replace(R.id.main_fragment,MessageFragment()).commit()
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.profile ->{
+                    binding.bottomNavViewBar.getOrCreateBadge(R.id.favorites).apply {
+                        number = favorites.size
+                        isVisible = false
+                    }
+                    parentFragmentManager.beginTransaction().replace(R.id.main_fragment,Fill_ProfileFragment()).commit()
+                    return@setOnNavigationItemSelectedListener true
+                }
+
+                else -> {
+                    return@setOnNavigationItemSelectedListener false
+                }
+            }
+        }
+
+
+        binding.bottomNavViewBar.getOrCreateBadge(R.id.favorites).apply {
+            number = favorites.size
+            isVisible = true
+
+        }
         return binding.root
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MainFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             MainFragment().apply {

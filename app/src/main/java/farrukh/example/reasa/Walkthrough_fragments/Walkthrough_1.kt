@@ -1,13 +1,18 @@
 package farrukh.example.reasa.Walkthrough_fragments
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
+import com.google.gson.Gson
 import farrukh.example.reasa.R
 import farrukh.example.reasa.databinding.FragmentWalkthrough1Binding
+import farrukh.example.reasa.model.Category
+import farrukh.example.reasa.model.Featured
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,6 +29,7 @@ class Walkthrough_1 : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -38,6 +44,69 @@ class Walkthrough_1 : Fragment() {
     ): View? {
 
         val binding = FragmentWalkthrough1Binding.inflate(inflater,container,false)
+
+        val list = mutableListOf<Featured>()
+        list.add(
+            Featured(
+                "Modern",
+                R.drawable.modern_home,
+                28.5,
+                Category.APARTMENT,
+                false
+            )
+        )
+        list.add(
+            Featured(
+                "Hi tech",
+                R.drawable.modern_home,
+                28.5,
+                Category.HI_TECH_HOME,
+                false
+            )
+        )
+        list.add(
+            Featured(
+                "Home",
+                R.drawable.modern_home,
+                28.5,
+                Category.VILLA,
+                false
+            )
+        )
+        list.add(
+            Featured(
+                "Nest One",
+                R.drawable.modern_home,
+                28.5,
+                Category.HOUSE,
+                false
+            )
+        )
+        list.add(
+            Featured(
+                "Murad",
+                R.drawable.modern_home,
+                28.5,
+                Category.ECO_HOME,
+                false
+            )
+        )
+        list.add(
+            Featured(
+                "ARCA",
+                R.drawable.modern_home,
+                28.5,
+                Category.VILLA,
+                false
+            )
+        )
+
+        val gson = Gson()
+        val activity: AppCompatActivity = activity as AppCompatActivity
+        val sharedPreferences = activity.getSharedPreferences("user", Context.MODE_PRIVATE)
+        val edit = sharedPreferences.edit()
+        val s = gson.toJson(list)
+        edit.putString("favorite", s).apply()
 
         binding.next.setOnClickListener {
             findNavController().navigate(R.id.action_walkthrough_1_to_walkthrough_2)

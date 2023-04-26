@@ -13,6 +13,12 @@
         <action
             android:id="@+id/action_splashFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_pinCode_Fragment"
+            app:destination="@id/pinCode_Fragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
@@ -105,7 +111,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="farrukh.example.reasa.SignInSignUp_fragments.ProfileFragment"
+        android:name="farrukh.example.reasa.SignInSignUp_fragments.Fill_ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -114,6 +120,9 @@
         <action
             android:id="@+id/action_profileFragment_to_pinCode_Fragment"
             app:destination="@id/pinCode_Fragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_options_for_Signing_Fragment"
+            app:destination="@id/options_for_Signing_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/pinCode_Fragment"
@@ -125,11 +134,33 @@
             app:destination="@id/loginFragment" />
         <action
             android:id="@+id/action_pinCode_Fragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/nav_main" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
         android:name="farrukh.example.reasa.Main_fragments.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        android:label="fragment_main2"
+        tools:layout="@layout/fragment_main2" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="farrukh.example.reasa.Main_fragments.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_exploreFragment"
+            app:destination="@id/exploreFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exploreFragment"
+        android:name="farrukh.example.reasa.Main_fragments.ExploreFragment"
+        android:label="fragment_explore"
+        tools:layout="@layout/fragment_explore" />
+    <fragment
+        android:id="@+id/descriptionFragment"
+        android:name="farrukh.example.reasa.Main_fragments.DescriptionFragment"
+        android:label="fragment_description"
+        tools:layout="@layout/fragment_description" />
 </navigation>

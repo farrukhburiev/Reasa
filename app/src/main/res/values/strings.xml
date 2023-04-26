@@ -11,4 +11,9 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+    <string-array name="range_slider">
+        <item>10</item>
+        <item>50</item>
+    </string-array>
 </resources>
